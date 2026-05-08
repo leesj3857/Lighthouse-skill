@@ -1,0 +1,13 @@
+{
+  "device": "desktop",
+  "mode": "navigation",
+  "categories": ["performance", "accessibility", "best-practices", "seo"],
+  "throttling": "simulate",
+  "output": ["json"],
+  "outputPath": "/tmp/lh-run",
+  "locale": "en",
+  "language": "en",
+  "disableStorageReset": false,
+  "disableFullPageScreenshot": false,
+  "extraHeaders": {}
+}
