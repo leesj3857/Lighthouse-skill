@@ -52,7 +52,8 @@ Change settings:
   /lighthouse-mode         → mode (navigation / timespan / snapshot)
   /lighthouse-categories   → categories
   /lighthouse-throttling   → throttling (simulate / devtools / provided)
-  /lighthouse-output       → output format, locale, language, storage, screenshot
+  /lighthouse-output       → output format, locale, storage, screenshot
+  /lighthouse-lang         → history.md language (en / kr)
   /lighthouse-config reset → reset to defaults
   /lighthouse              → run audit with current settings
 ```
