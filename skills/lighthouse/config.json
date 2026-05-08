@@ -6,7 +6,6 @@
   "output": ["json"],
   "outputPath": "/tmp/lh-run",
   "locale": "ko",
-  "language": "en",
   "disableStorageReset": false,
   "disableFullPageScreenshot": false,
   "extraHeaders": {}

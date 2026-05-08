@@ -1,17 +1,17 @@
 ---
-description: Set Lighthouse output format, Lighthouse locale, history language, storage reset, and screenshot options.
+description: Set Lighthouse output format, locale (controls both Lighthouse UI language and history.md labels), storage reset, and screenshot options.
 disable-model-invocation: true
 ---
 
 ## Load Config
 
 ```!
-cat .claude/skills/lighthouse/config.json 2>/dev/null || echo '{"device":"desktop","mode":"navigation","categories":["performance","accessibility","best-practices","seo"],"throttling":"simulate","output":["json"],"outputPath":"/tmp/lh-run","locale":"en","language":"en","disableStorageReset":false,"disableFullPageScreenshot":false,"extraHeaders":{}}'
+cat .claude/skills/lighthouse/config.json 2>/dev/null || echo '{"device":"desktop","mode":"navigation","categories":["performance","accessibility","best-practices","seo"],"throttling":"simulate","output":["json"],"outputPath":"/tmp/lh-run","locale":"en","disableStorageReset":false,"disableFullPageScreenshot":false,"extraHeaders":{}}'
 ```
 
 ## Procedure
 
-1. Read the current `output`, `locale`, `disableStorageReset`, and `disableFullPageScreenshot` values from the JSON above.
+1. Read the current `output`, `locale`, `disableStorageReset`, and `disableFullPageScreenshot` values from the JSON above. (`locale` now controls both the Lighthouse UI language and the history.md labels — there is no separate `language` field.)
 
 2. **Output format** — show AskUserQuestion:
    - question: "Select output format(s) (current: {current value}, multi-select)"
@@ -22,8 +22,8 @@ cat .claude/skills/lighthouse/config.json 2>/dev/null || echo '{"device":"deskto
      - label: "html", description: "Save HTML report viewable in a browser. (--output=html)"
      - label: "csv", description: "Save CSV report for spreadsheet analysis. (--output=csv)"
 
-3. **Lighthouse locale** — show AskUserQuestion:
-   - question: "Select Lighthouse report locale (current: {current value})"
+3. **Locale** — show AskUserQuestion:
+   - question: "Select locale (current: {current value}) — controls both Lighthouse report language and history.md labels"
    - header: "Locale"
    - multiSelect: false
    - options:
@@ -50,7 +50,7 @@ cat .claude/skills/lighthouse/config.json 2>/dev/null || echo '{"device":"deskto
 
 6. Save all selections to `.claude/skills/lighthouse/config.json`:
    - `output`: array of selected formats. If empty, keep `["json"]`.
-   - `locale`: selected locale
+   - `locale`: selected locale (drives both Lighthouse UI language and history.md labels)
    - `disableStorageReset`: `true` if "Keep cache" selected, otherwise `false`
    - `disableFullPageScreenshot`: `true` if "Exclude" selected, otherwise `false`
 
