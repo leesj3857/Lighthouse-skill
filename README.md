@@ -37,6 +37,18 @@ Runs a Google Lighthouse audit against your local dev server, analyzes failures,
 
 ## Installation
 
+### Quick Install (Mac / Linux)
+
+Paste the following into your terminal to install all skill files directly into `~/.claude/skills/`:
+
+```bash
+BASE="https://raw.githubusercontent.com/leesj3857/Lighthouse-skill/main/skills" && for s in lighthouse lighthouse-categories lighthouse-config lighthouse-device lighthouse-lang lighthouse-mode lighthouse-output lighthouse-throttling; do mkdir -p ~/.claude/skills/$s && curl -fsSL "$BASE/$s/SKILL.md" -o ~/.claude/skills/$s/SKILL.md; done && curl -fsSL "$BASE/lighthouse/config.json" -o ~/.claude/skills/lighthouse/config.json && echo "✅ Lighthouse skills installed → ~/.claude/skills/"
+```
+
+> After installing, start your dev server and run `/lighthouse` in Claude Code.
+
+### Manual Install
+
 ### Requirements
 - [Claude Code](https://claude.ai/code) CLI or desktop app
 - `npx` (Node.js) — used to run `lighthouse` without a global install

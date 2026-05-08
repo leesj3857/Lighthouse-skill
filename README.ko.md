@@ -8,19 +8,19 @@
 
 ## 스킬 목록
 
-### `/lighthouse` — Lighthouse 감사 도구
+### `/lighthouse` — Lighthouse 검사 도구
 
-로컬 개발 서버에 Google Lighthouse 감사를 실행하고, 문제를 분석한 뒤 수정할 항목을 고르면 코드를 자동으로 수정합니다. 수정 후 재빌드 및 재측정까지 진행하며, Before/After 비교 결과를 `history.md`에 저장합니다.
+로컬 개발 서버에 Google Lighthouse 검사를 실행하고, 문제를 분석한 뒤 수정할 항목을 고르면 코드를 자동으로 수정합니다. 수정 후 재빌드 및 재측정까지 진행하며, Before/After 비교 결과를 `history.md`에 저장합니다.
 
 **설정 커맨드:**
 
 | 커맨드 | 설명 |
 |---|---|
-| `/lighthouse` | 현재 설정으로 감사 실행 |
+| `/lighthouse` | 현재 설정으로 검사 실행 |
 | `/lighthouse-config` | 현재 설정 확인 / 기본값으로 초기화 |
 | `/lighthouse-device` | 데스크탑 / 모바일 전환 |
 | `/lighthouse-mode` | 측정 모드 전환 (navigation / timespan / snapshot) |
-| `/lighthouse-categories` | 감사할 카테고리 선택 |
+| `/lighthouse-categories` | 검사할 카테고리 선택 |
 | `/lighthouse-throttling` | 스로틀링 방식 설정 (simulate / devtools / provided) |
 | `/lighthouse-output` | 출력 형식, 로케일, 히스토리 언어, 스크린샷 옵션 설정 |
 
@@ -36,6 +36,18 @@
 ---
 
 ## 설치
+
+### 한 줄 설치 (Mac / Linux)
+
+터미널에 아래 명령어를 붙여넣으면 모든 스킬 파일이 `~/.claude/skills/`에 바로 설치됩니다:
+
+```bash
+BASE="https://raw.githubusercontent.com/leesj3857/Lighthouse-skill/main/skills" && for s in lighthouse lighthouse-categories lighthouse-config lighthouse-device lighthouse-lang lighthouse-mode lighthouse-output lighthouse-throttling; do mkdir -p ~/.claude/skills/$s && curl -fsSL "$BASE/$s/SKILL.md" -o ~/.claude/skills/$s/SKILL.md; done && curl -fsSL "$BASE/lighthouse/config.json" -o ~/.claude/skills/lighthouse/config.json && echo "✅ Lighthouse 스킬 설치 완료 → ~/.claude/skills/"
+```
+
+> 설치 후 개발 서버를 켜고 Claude Code에서 `/lighthouse`를 실행하면 바로 사용할 수 있습니다.
+
+### 수동 설치
 
 ### 요구사항
 - [Claude Code](https://claude.ai/code) CLI 또는 데스크탑 앱
@@ -72,10 +84,10 @@
                └── SKILL.md
    ```
 
-2. **`.gitignore`에 히스토리 디렉터리 추가** (감사 히스토리를 버전 관리에서 제외):
+2. **`.gitignore`에 히스토리 디렉터리 추가** (검사 히스토리를 버전 관리에서 제외):
 
    ```gitignore
-   # Claude Code — Lighthouse 감사 히스토리
+   # Claude Code — Lighthouse 검사 히스토리
    .claude/lighthouse/
    ```
 
@@ -104,7 +116,7 @@
 
 ## 히스토리 저장 위치
 
-감사 결과는 `.claude/lighthouse/`에 저장됩니다 (기본적으로 gitignore 처리).
+검사 결과는 `.claude/lighthouse/`에 저장됩니다 (기본적으로 gitignore 처리).
 
 - 루트 URL `/` → `.claude/lighthouse/history.md`
 - `/search` → `.claude/lighthouse/search/history.md`
