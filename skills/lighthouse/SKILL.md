@@ -7,12 +7,12 @@ allowed-tools: Bash, Read, Edit, Write
 ## Load Config
 
 ```!
-cat .claude/skills/lighthouse/config.json 2>/dev/null || echo '{"device":"desktop","mode":"navigation","categories":["performance","accessibility","best-practices","seo"],"throttling":"simulate","output":["json"],"outputPath":"/tmp/lh-run","locale":"en","disableStorageReset":false,"disableFullPageScreenshot":false,"extraHeaders":{}}'
+cat .claude/skills/lighthouse/config.json 2>/dev/null || echo '{"device":"desktop","mode":"navigation","categories":["performance","accessibility","best-practices","seo"],"throttling":"simulate","output":["json"],"outputPath":"/tmp/lh-run","language":"en","disableStorageReset":false,"disableFullPageScreenshot":false,"extraHeaders":{}}'
 ```
 
 ## 1. Parse Settings & Arguments
 
-Read device, mode, categories, throttling, outputPath, locale from the JSON above.
+Read device, mode, categories, throttling, outputPath, language from the JSON above.
 
 Token overrides from `$ARGUMENTS` (this run only):
 - `/path` or `http(s)://` → URL
@@ -56,7 +56,7 @@ npx lighthouse <URL> \
   --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
   --only-categories=<categories comma-separated> \
   --throttling-method=<throttling> \
-  --locale=<locale> --quiet \
+  --locale=<language> --quiet \
   [--preset=desktop  if device=desktop]
 ```
 
@@ -179,7 +179,7 @@ npx lighthouse <URL> \
   --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
   --only-categories=<categories> \
   --throttling-method=<throttling> \
-  --locale=<locale> --quiet \
+  --locale=<language> --quiet \
   [--preset=desktop]
 ```
 
@@ -199,7 +199,7 @@ Save to `<HISTORY_DIR>/history.md`. If the file doesn't exist, create it with th
 ---
 ```
 
-Use **locale** from config to determine all labels (`ko` → Korean, anything else → English):
+Use **language** from config to determine all labels (`ko` → Korean, anything else → English):
 
 | Element | `en` | `ko` |
 |---|---|---|
@@ -264,7 +264,7 @@ CWV: FCP 0.5s · LCP 2.6s · TBT 0ms · CLS 0.029 · SI 0.5s · TTI 2.6s
 **Common rules:**
 - Bold any CWV value where LCP > 2.5s or CLS > 0.1
 - Omit `<details>` block and write `No failures ✅` when there are none
-- When locale is `ko`, replace all English labels with their Korean equivalents from the table above
+- When language is `ko`, replace all English labels with their Korean equivalents from the table above
 
 ## 11. Print Summary
 

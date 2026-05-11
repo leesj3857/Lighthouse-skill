@@ -5,7 +5,7 @@
   "throttling": "simulate",
   "output": ["json"],
   "outputPath": "/tmp/lh-run",
-  "locale": "ko",
+  "language": "ko",
   "disableStorageReset": false,
   "disableFullPageScreenshot": false,
   "extraHeaders": {}
